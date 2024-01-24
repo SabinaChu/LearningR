@@ -5,6 +5,32 @@ format: html
 editor: visual
 ---
 
+- Sabina Chubanava
+- NNF CBMR, University of Copenhagen 
+
+# Intro
+
+A *random* short sentence under **Intro**.
+
+# Methods and Results
+
+A *random* short sentence under **Methods and Results**.
+
+## Analysis
+
+A *random* short sentence under **Analysis**.
+
+# Discussion 
+
+A *random* short sentence under **Discussion**. 
+
+```{r}
+2+2
+```
+
+
+
+
 ```{r setup}
 #| message: FALSE
 #| warning: FALSE
