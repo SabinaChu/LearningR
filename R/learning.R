@@ -133,3 +133,52 @@ nhanes_modified <- NHANES_small %>%
         # 3. Create young_child variable using a condition
         young_child = if_else(age<6, "Yes", "No")
     )
+
+# Calculating summary stats -----------------------------------------------
+
+NHANES_small %>%
+    summarise(max_bmi=max(bmi,na.rm=TRUE))
+
+NHANES_small %>%
+    summarise(max_bmi=max (bmi, na.rm=TRUE),
+              min_bmi=min(bmi, na.rm=TRUE))
+
+# Summary stats by group  -------------------------------------------------
+
+NHANES_small %>%
+    group_by(diabetes) %>%
+    summarise(mean_age=mean(age, na.rm=TRUE),
+              mean_bmi=mean(bmi, na.rm=TRUE))
+NHANES_small %>%
+    filter(!is.na(diabetes)) %>%
+    group_by(diabetes) %>%
+    summarise(mean_age=mean(age, na.rm=TRUE),
+              mean_bmi=mean(bmi,na.rm=TRUE))
+NHANES_small %>%
+    filter(!is.na(diabetes)) %>%
+    group_by(diabetes,phys_active) %>%
+    summarise(mean_age=mean(age, na.rm=TRUE),
+              mean_bmi=mean(bmi,na.rm=TRUE))
+NHANES_small %>%
+    filter(!is.na(diabetes)) %>%
+    filter(!is.na(phys_active)) %>%
+    group_by(diabetes,phys_active) %>%
+    summarise(mean_age=mean(age, na.rm=TRUE),
+              mean_bmi=mean(bmi,na.rm=TRUE))
+NHANES_small %>%
+    filter(!is.na(diabetes)) %>%
+    group_by(diabetes,phys_active) %>%
+    summarise(mean_age=mean(age, na.rm=TRUE),
+              mean_bmi=mean(bmi,na.rm=TRUE)) %>%
+    ungroup()
+
+# Saving dataset as a file ------------------------------------------------
+
+readr::write_csv(NHANES_small,
+                 here::here("data/NHANES_small.csv"))
+
+
+# Quarto ------------------------------------------------------------------
+
+
+
