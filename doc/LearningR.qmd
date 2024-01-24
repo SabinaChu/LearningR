@@ -35,6 +35,7 @@ nhanes_small %>%
 
 ```{r}
 #| echo: FALSE
+#| message: FALSE
 nhanes_small %>%
   filter(!is.na(diabetes), !is.na(education)) %>%
   group_by(diabetes, education) %>%
