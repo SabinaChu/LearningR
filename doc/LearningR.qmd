@@ -5,8 +5,8 @@ format: html
 editor: visual
 ---
 
-- Sabina Chubanava
-- NNF CBMR, University of Copenhagen 
+-   Sabina Chubanava
+-   NNF CBMR, University of Copenhagen
 
 # Intro
 
@@ -20,16 +20,13 @@ A *random* short sentence under **Methods and Results**.
 
 A *random* short sentence under **Analysis**.
 
-# Discussion 
+# Discussion
 
-A *random* short sentence under **Discussion**. 
+A *random* short sentence under **Discussion**.
 
 ```{r}
 2+2
 ```
-
-
-
 
 ```{r setup}
 #| message: FALSE
@@ -57,7 +54,8 @@ nhanes_small %>%
   ungroup() %>%
   knitr::kable(caption = "Mean values of Age and BMI for each Education and Diabetes status")
 ```
-##Prettier table 
+
+##Prettier table
 
 ```{r}
 #| echo: FALSE
@@ -85,4 +83,7 @@ nhanes_small %>%
     "Mean BMI" = "mean_bmi"
   ) %>%
   knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
+
 ```
+
+![NAD cleaving enzymes.](images/nad%20cleaving%20enzymes%20ptms%20-%20only%20bottom.png){width="60%"}
