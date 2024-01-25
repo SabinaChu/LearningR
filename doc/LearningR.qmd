@@ -25,7 +25,7 @@ A *random* short sentence under **Analysis**.
 A *random* short sentence under **Discussion**.
 
 ```{r}
-2+2
+2 + 2
 ```
 
 ```{r setup}
@@ -83,7 +83,85 @@ nhanes_small %>%
     "Mean BMI" = "mean_bmi"
   ) %>%
   knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
-
 ```
 
-![NAD cleaving enzymes.](images/nad%20cleaving%20enzymes%20ptms%20-%20only%20bottom.png){width="60%"}
+NAD consuming enzymes are shown in @fig-enzymes 
+
+![NAD cleaving enzymes.](images/nad cleaving enzymes ptms - only bottom.png){#fig-enzymes width="60%" height="60%"}
+###One variable plot 
+
+```{r}
+#| fig-cap: "Distribution of BMI"
+#| label: fig-bmi-histo
+#| message: FALSE
+nhanes_small %>%
+  filter(bmi <= 60) %>%
+  ggplot(aes(x = bmi)) +
+  geom_histogram(na.rm = TRUE)
+```
+
+```{r}
+#| fig-cap: "Education"
+#| label: fig-edu
+#| message: FALSE
+nhanes_small %>%
+  ggplot(aes(x = education)) +
+  geom_bar()
+```
+
+
+
+
+```{r}
+#| label: fig-diabetes-educatio
+#| fig-cap: "Diabetes Status and Education Level"
+#| fig-subcap:
+#| - "Education level"
+#| - "Diabetes status"
+#| layout-ncol: 2
+#| message: FALSE
+nhanes_small %>%
+  filter(!is.na(education)) %>%
+  ggplot(aes(x = education)) +
+  geom_bar()
+
+nhanes_small %>%
+  filter(!is.na(diabetes)) %>%
+  ggplot(aes(x = diabetes)) +
+  geom_bar()
+```
+
+
+###Plotting two variables
+
+```{r}
+nhanes_small %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave)) +
+  geom_hex(na.rm = TRUE) +
+  geom_smooth(na.rm = TRUE)
+```
+
+## Plotting two discrete variables 
+
+```{r}
+nhanes_small %>%
+  filter(!is.na(education), !is.na(diabetes)) %>%
+  ggplot(aes(x = diabetes, fill = education)) +
+  geom_bar(position = position_dodge())
+```
+
+```{r}
+nhanes_small %>%
+  filter(!is.na(education), !is.na(diabetes)) %>%
+  ggplot(aes(x = diabetes, fill = education)) +
+  geom_bar()
+```
+##Plotting discrete and continous variables 
+
+```{r}
+#| message: FALSE
+nhanes_small %>%
+  filter(!is.na(diabetes), bmi <= 60) %>%
+  ggplot(aes(x = diabetes, y = bmi)) +
+  geom_violin(na.rm = TRUE)
+```
