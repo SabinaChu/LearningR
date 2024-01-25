@@ -264,3 +264,46 @@ nhanes_small %>%
     col = vars(education)
   )
 ```
+
+##Exercise for changing colours 
+
+```{r}
+# Barplot to work from, with two discrete variables
+nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(x = diabetes, fill = education)) +
+  geom_bar(position = position_dodge()) +
+  scale_fill_viridis_d()
+```
+```{r}
+# Barplot to work from, with two discrete variables
+nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(x = diabetes, fill = education)) +
+  geom_bar(position = position_dodge()) +
+  scale_fill_viridis_d(option = "magma")
+```
+```{r}
+# Barplot to work from, with two discrete variables
+nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(x = diabetes, fill = education)) +
+  geom_bar(position = position_dodge()) +
+  scale_fill_viridis_d(option = "cividis")
+```
+
+```{r}
+# Scatterplot to work from, with three continuous variables
+nhanes_small %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave, colour = age)) +
+  geom_point(na.rm = TRUE) +
+  scale_colour_viridis_c()
+```
+```{r}
+# Scatterplot to work from, with three continuous variables
+nhanes_small %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave, colour = age)) +
+  geom_point(na.rm = TRUE) +
+  scale_colour_viridis_c(option = "inferno")
+```
+
