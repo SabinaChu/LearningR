@@ -177,5 +177,3 @@ NHANES_small %>%
 readr::write_csv(NHANES_small,
                  here::here("data/NHANES_small.csv"))
 
-
-
